@@ -130,7 +130,7 @@
 .detail-box {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   margin-top: 17px;
 }
 
@@ -157,6 +157,28 @@
   position: relative;
   top: -65px;
   left: 13px;
+}
+
+.gitDetail > button {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+}
+
+.likeBtn {
+  width: 31px;
+  height: 33px;
+  position: relative;
+  left: -4px;
+  top: -2px;
+  border: none;
+}
+
+.like-btn:active {
+  box-shadow: box-shadow 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+  transform: translateY(3px);
 }
 
 /* Media Queries */
@@ -206,6 +228,15 @@
   }
   .container .card_item img {
     width: 100%;
+  }
+  .detail-box {
+    justify-content: space-evenly;
+  }
+  .container .card_item .gitDetail {
+    flex-direction: row;
+  }
+  .container .card_inner {
+    padding: 0px 0px 20px 0px;
   }
 }
 

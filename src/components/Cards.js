@@ -1,9 +1,14 @@
 // import Card from "react-bootstrap/Card";
 import { useState, useEffect } from "react";
 import "../App.css";
+import likeBtn from "../images/likeBtn.png";
+import reload from "../images/reload.png";
 
 const Cards = () => {
   const [users, setUsers] = useState([]);
+
+  const [like, setLike] = useState(0);
+  const [likeActive, setLikeActive] = useState(true);
 
   const fetchData = async () => {
     return fetch("http://localhost:3100/api/users/")
@@ -25,6 +30,17 @@ const Cards = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const likeFunc = () => {
+    if (likeActive) {
+      console.log(likeActive);
+      setLikeActive(false);
+      setLike(like + 1);
+    } else {
+      setLikeActive(true);
+      setLike(like - 1);
+    }
+  };
 
   return (
     <div className="container">
@@ -51,12 +67,27 @@ const Cards = () => {
               </div>
               <div className="detail-box">
                 <div className="gitDetail">
-                  <span>{curElem.likes_count}</span>
-                  <span>Like button</span>
+                  {/* I want to add +1 to the below */}
+                  {/* !!!!! IT's adding + 1 to all of them! */}
+                  <span>{curElem.likes_count + like}</span>
+                  <button onClick={likeFunc}>
+                    <img
+                      src={likeBtn}
+                      alt="like-btn"
+                      className="like-btn"
+                      style={{ width: "32px", height: "32px" }}
+                    />
+                  </button>
                 </div>
                 <div className="gitDetail">
-                  <span>Reload button</span>
-                  <span>Following</span>
+                  <button>
+                    <img
+                      src={reload}
+                      alt="like-btn"
+                      style={{ width: "30px", height: "32px" }}
+                    />
+                  </button>
+                  <span>000</span>
                 </div>
               </div>
             </div>
