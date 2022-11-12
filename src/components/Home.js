@@ -1,8 +1,12 @@
+import { useState } from "react";
 import Main from "./Main";
 import logo from "../images/logo.png";
 import "../App.css";
 
 const Home = () => {
+  const [search, setSearch] = useState("");
+  console.log(search);
+
   return (
     <div>
       <div className="navbar">
@@ -17,10 +21,14 @@ const Home = () => {
           />
         </div>
         <div className="searchBar">
-          <input type="text" placeholder="You're looking for something?" />
+          <input
+            onChange={(e) => setSearch(e.target.value)}
+            type="text"
+            placeholder="You're looking for something?"
+          />
         </div>
       </div>
-      <Main />
+      <Main search={search} setSearch={setSearch} />
     </div>
   );
 };

@@ -45,16 +45,39 @@
 }
 
 /* MAIN */
-.main-div {
+
+/* .slider {
+  height: 250px;
+  margin: auto;
+  position: relative;
+  width: 90%;
   display: grid;
-  height: 65vh;
-  margin: 1rem;
-  border-radius: 2rem;
-  background-color: pink;
+} */
+
+.slider-track {
+  display: flex;
+  /* width: calc(250px * 15); */
+  /* animation: scroll 40s linear infinite; */
 }
 
-.carousel-indicators {
-  visibility: hidden;
+.slider-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 8));
+  }
+}
+
+.slide {
+  width: 250px;
+  display: flex;
+  align-items: center;
+  padding: 15px;
 }
 
 /* CARDS */
@@ -62,11 +85,9 @@
   padding: 0px 20px 20px 20px;
   width: 99%;
   margin: auto;
-  flex-wrap: wrap;
   display: flex;
   justify-content: space-between;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
 .card_item {
@@ -103,7 +124,6 @@
 .container .card_item .userName {
   color: #203150;
   font-weight: 400;
-  font-size: 20px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -136,9 +156,6 @@
 
 .detail-box span {
   padding: 2px 10px;
-  /* border: 2px solid #c7e6fa; */
-  /* background-color: #f0ebfa; */
-  /* border-radius: 50px; */
   font-size: 10px;
   font-weight: 600;
   color: #788697;
@@ -183,7 +200,7 @@
 
 /* Media Queries */
 
-/* min-width: 1025 px? */
+/* min-width: 1025 px */
 
 @media screen and (min-width: 1025px) {
   .container .card_item {
@@ -222,8 +239,14 @@
 }
 
 @media screen and (max-width: 568px) {
+  .App {
+    overflow-x: hidden;
+  }
+  .container {
+    width: 198%;
+  }
   .container .card_item {
-    width: 60%;
+    width: 100%;
     margin: auto;
   }
   .container .card_item img {
@@ -237,6 +260,17 @@
   }
   .container .card_inner {
     padding: 0px 0px 20px 0px;
+  }
+  .slider {
+    height: 375px;
+    margin: auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+  .slider-track {
+    display: flex;
+    width: calc(220px * 2);
+    /* animation: scroll 40s linear infinite; */
   }
 }
 
@@ -260,12 +294,6 @@
     font-size: 11px;
     color: grey;
   }
-  .main-div {
-    max-width: 500px;
-    max-height: 500px;
-    margin-left: 30px;
-    margin-right: 30px;
-  }
   .container .card_item {
     width: 100%;
   }
@@ -284,5 +312,15 @@
   }
   .container .card_item .gitDetail {
     flex-direction: row;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .slider {
+    height: 375px;
+    margin: auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
 }

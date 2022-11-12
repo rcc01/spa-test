@@ -4,7 +4,7 @@ import "../App.css";
 import likeBtn from "../images/likeBtn.png";
 import reload from "../images/reload.png";
 
-const Cards = () => {
+const Cards = ({ search, setSearch }) => {
   const [users, setUsers] = useState([]);
 
   const [like, setLike] = useState(0);
@@ -23,7 +23,8 @@ const Cards = () => {
         //   console.log(pic.main_attachment.small);
         // });
         setUsers(data);
-        console.log(data[0].main_attachment.small);
+        // console.log(data[0].main_attachment.small);
+        console.log(data);
       });
   };
 
@@ -43,57 +44,63 @@ const Cards = () => {
   };
 
   return (
-    <div className="container">
-      {users.map((curElem) => {
-        return (
-          <div className="card_item" key={curElem.id}>
-            <div className="card_inner">
-              <div>
-                <div className="triangle">
-                  <div className="price">
-                    <p>{curElem.price}€</p>
+    <div className="container" style={{ width: "125%" }}>
+      {users
+        .filter((item) => {
+          return search.toLowerCase() === ""
+            ? item
+            : item.title.toLowerCase().includes(search);
+        })
+        .map((curElem) => {
+          return (
+            <div className="card_item" key={curElem.id}>
+              <div className="card_inner">
+                <div>
+                  <div className="triangle">
+                    <div className="price">
+                      <p>{curElem.price}€</p>
+                    </div>
                   </div>
+
+                  <img src={"https://picsum.photos/id/100/300"} alt="small" />
                 </div>
 
-                <img src={"https://picsum.photos/id/100/300"} alt="small" />
-              </div>
-
-              <div className="userName">{curElem.title}</div>
-              <div className="userUrl">
-                by{" "}
-                <span style={{ fontWeight: "400", color: "black" }}>
-                  {curElem.author}
-                </span>
-              </div>
-              <div className="detail-box">
-                <div className="gitDetail">
-                  {/* I want to add +1 to the below */}
-                  {/* !!!!! IT's adding + 1 to all of them! */}
-                  <span>{curElem.likes_count + like}</span>
-                  <button onClick={likeFunc}>
-                    <img
-                      src={likeBtn}
-                      alt="like-btn"
-                      className="like-btn"
-                      style={{ width: "32px", height: "32px" }}
-                    />
-                  </button>
+                <div className="userName">{curElem.title}</div>
+                <div className="userUrl">
+                  by{" "}
+                  <span style={{ fontWeight: "400", color: "black" }}>
+                    {curElem.author}
+                  </span>
                 </div>
-                <div className="gitDetail">
-                  <button>
-                    <img
-                      src={reload}
-                      alt="like-btn"
-                      style={{ width: "30px", height: "32px" }}
-                    />
-                  </button>
-                  <span>000</span>
+                <div className="detail-box">
+                  <div className="gitDetail">
+                    {/* I want to add +1 to the below */}
+                    {/* !!!!! IT's adding + 1 to all of them! */}
+                    <span>{curElem.likes_count + like}</span>
+                    <button onClick={likeFunc}>
+                      <img
+                        src={likeBtn}
+                        alt="like-btn"
+                        className="like-btn"
+                        style={{ width: "32px", height: "32px" }}
+                      />
+                    </button>
+                  </div>
+                  <div className="gitDetail">
+                    <button>
+                      <img
+                        src={reload}
+                        alt="like-btn"
+                        style={{ width: "30px", height: "32px" }}
+                      />
+                    </button>
+                    <span>000</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
     </div>
   );
 };
