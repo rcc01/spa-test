@@ -1,4 +1,3 @@
-// import Card from "react-bootstrap/Card";
 import { useState, useEffect } from "react";
 import "../App.css";
 import likeBtn from "../images/likeBtn.png";
@@ -30,6 +29,7 @@ const Cards = ({ search, setSearch }) => {
 
   useEffect(() => {
     fetchData();
+    console.log(fetchData());
   }, []);
 
   const likeFunc = () => {
@@ -44,7 +44,7 @@ const Cards = ({ search, setSearch }) => {
   };
 
   return (
-    <div className="container" style={{ width: "125%" }}>
+    <div className="container">
       {users
         .filter((item) => {
           return search.toLowerCase() === ""
@@ -55,14 +55,13 @@ const Cards = ({ search, setSearch }) => {
           return (
             <div className="card_item" key={curElem.id}>
               <div className="card_inner">
-                <div>
-                  <div className="triangle">
+                <div className="image-group">
+                  <img src={curElem.main_attachment.small} alt="small" />
+                  <div className="triangle-topleft">
                     <div className="price">
                       <p>{curElem.price}€</p>
                     </div>
                   </div>
-
-                  <img src={"https://picsum.photos/id/100/300"} alt="small" />
                 </div>
 
                 <div className="userName">{curElem.title}</div>

@@ -5,7 +5,6 @@ import "../App.css";
 
 const Home = () => {
   const [search, setSearch] = useState("");
-  console.log(search);
 
   return (
     <div>
