@@ -443,7 +443,7 @@ module.exports = [
         id: "success", // id of the variant
         type: "status", // variant type
         options: {
-          status: 201,
+          status: 204,
         },
       },
     ],
