@@ -3,7 +3,7 @@
 // https://mocks-server.org/docs/usage/routes
 
 // users data
-const USERS = [
+const IMAGES = [
   {
     type: "Image",
     id: 2,
@@ -396,12 +396,12 @@ const USERS = [
   },
 ];
 
-const ALL_USERS = [...USERS];
+const ALL_IMAGES = [...IMAGES];
 
 module.exports = [
   {
-    id: "get-users", // route id
-    url: "/api/users", // url in express format
+    id: "get-image", // route id
+    url: "/images", // url in express format
     method: "GET", // HTTP method
     variants: [
       {
@@ -409,7 +409,7 @@ module.exports = [
         type: "json", // variant handler id
         options: {
           status: 200, // status to send
-          body: USERS, // body to send
+          body: IMAGES, // body to send
         },
       },
       {
@@ -417,7 +417,7 @@ module.exports = [
         type: "json", // variant handler id
         options: {
           status: 200, // status to send
-          body: ALL_USERS, // body to send
+          body: ALL_IMAGES, // body to send
         },
       },
       {
@@ -435,8 +435,8 @@ module.exports = [
   },
   // POST?!
   {
-    id: "create-user", // id of the route
-    url: "/api/users", // url in path-to-regexp format
+    id: "create-image", // id of the route
+    url: "/images", // url in path-to-regexp format
     method: "POST", // HTTP method
     variants: [
       {
@@ -449,8 +449,22 @@ module.exports = [
     ],
   },
   {
-    id: "get-user", // route id
-    url: "/api/users/:id", // url in express format
+    id: "like-image",
+    url: "/images/:id/likes",
+    method: "POST",
+    variants: [
+      {
+        id: "success", // id of the variant
+        type: "status", // variant type, returns empty body
+        options: {
+          status: 204,
+        },
+      },
+    ],
+  },
+  {
+    id: "get-image", // route id
+    url: "/images/:id", // url in express format
     method: "GET", // HTTP method
     variants: [
       {
@@ -458,7 +472,7 @@ module.exports = [
         type: "json", // variant handler id
         options: {
           status: 200, // status to send
-          body: USERS[0], // body to send
+          body: IMAGES[0], // body to send
         },
       },
       {
@@ -466,7 +480,7 @@ module.exports = [
         type: "json", // variant type
         options: {
           status: 200, // status to send
-          body: ALL_USERS[1], // body to send
+          body: ALL_IMAGES[1], // body to send
         },
       },
       {
@@ -474,7 +488,7 @@ module.exports = [
         type: "json", // variant handler id
         options: {
           status: 200, // status to send
-          body: ALL_USERS[2], // body to send
+          body: ALL_IMAGES[2], // body to send
         },
       },
       {
@@ -484,7 +498,7 @@ module.exports = [
           // Express middleware to execute
           middleware: (req, res) => {
             const userId = req.params.id;
-            const user = USERS.find(
+            const user = IMAGES.find(
               (userData) => userData.id === Number(userId)
             );
             if (user) {

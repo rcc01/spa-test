@@ -3,11 +3,11 @@ import "../App.css";
 
 import Card from "./Card";
 
-const Cards = ({ search, setSearch }) => {
+const Cards = ({ search }) => {
   const [cards, setCards] = useState([]);
 
   const fetchData = async () => {
-    return fetch("http://localhost:3100/api/users/")
+    return fetch("http://localhost:3100/images")
       .then((response) => response.json())
       .then((data) => {
         data.forEach((title) => {
@@ -24,15 +24,15 @@ const Cards = ({ search, setSearch }) => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="cards__container">
       {cards
         .filter((item) => {
           return search.toLowerCase() === ""
             ? item
             : item.title.toLowerCase().includes(search);
         })
-        .map((image) => (
-          <Card image={image} />
+        .map((image, i) => (
+          <Card image={image} key={i} />
         ))}
     </div>
   );

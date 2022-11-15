@@ -11,10 +11,10 @@
   width: auto;
   height: 10rem;
 }
-.searchBar {
+.navbar__searchBar {
   flex: 1 1 auto;
 }
-.searchBar > input {
+.navbar__searchBar > input {
   width: 200px;
   height: 30px;
   border: none;
@@ -26,7 +26,7 @@
   background-repeat: no-repeat;
   background-position: 10px center;
 }
-.searchBar > input[type="text"]:focus {
+.navbar__searchBar > input[type="text"]:focus {
   box-shadow: 0 0 5px 0 #3f69a8;
   border-color: #3f69a8;
   outline: 10px;
@@ -35,18 +35,12 @@ input::placeholder {
   font-size: 11px;
   color: grey;
 }
-.logo {
+.navbar__logo {
   flex: 1 1 auto;
 }
 
-/* MAIN */
-.slider {
-  height: 410px;
-  margin: auto;
-}
-
-/* CARD */
-.container {
+/* CARDS */
+.cards__container {
   padding: 40px 20px 20px 20px;
   width: 99%;
   margin: auto;
@@ -54,21 +48,10 @@ input::placeholder {
   display: flex;
   justify-content: space-between;
 }
-.price p {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  position: absolute;
-  bottom: 50px;
-  left: 12px;
-}
 
-.container .card:hover {
-  transform: scale(1.02);
-  transition: transform 0.3s;
-  cursor: pointer;
-}
+/* CARD */
 
-.container .card_inner {
+.card__inner {
   background: rgba(253, 253, 253, 0.808);
   border-radius: 10px;
   padding: 0px 0px 12px 0px;
@@ -77,17 +60,17 @@ input::placeholder {
   width: 100%;
   box-shadow: 5px 5px 10px 2px rgba(95, 95, 95, 0.24);
 }
-.image-group {
+.card__image__group {
   height: 266px;
 }
-
 .card__image {
   width: 100%;
   height: 240px;
   margin-bottom: 15px;
   transition: transform 0.2s;
 }
-.triangle-topleft {
+
+.card__triangle {
   width: 0;
   height: 0;
   border-top: 100px solid white;
@@ -95,7 +78,22 @@ input::placeholder {
   position: relative;
   bottom: 16rem;
 }
-.container .card .userUrl {
+
+.card__price > p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  position: absolute;
+  bottom: 50px;
+  left: 12px;
+}
+
+.card:hover {
+  transform: scale(1);
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.card__author {
   font-size: 12px;
   font-weight: 100;
   margin: 0px 0px;
@@ -105,13 +103,13 @@ input::placeholder {
   white-space: nowrap;
 }
 
-.detail-box {
+.card__details {
   display: flex;
   justify-content: space-evenly;
   margin-top: 17px;
   align-items: center;
 }
-.detail-box > span {
+.card__details > span {
   margin: 2px;
   padding: 2px 10px;
   border: 2px solid #c7e6fa;
@@ -121,57 +119,40 @@ input::placeholder {
   font-weight: 600;
   color: #788697;
 }
-.container .card .gitDetail {
+.card__buttons {
   flex-direction: row;
   font-size: 14px;
   line-height: 33px;
   color: #7b8ca0;
-  display: flex;
 }
-.gitDetail > span {
-  margin-left: 10px;
-  margin-right: 5px;
+.likes-counter {
+  margin-left: 9px;
+  margin-right: 8px;
+  position: relative;
+  bottom: 5px;
 }
-.gitDetail > button {
+.card__buttons > button {
   height: 30px;
   border: none;
   background-color: transparent;
 }
-.likeBtn {
-  width: 31px;
-  height: 33px;
-  position: relative;
-  left: -4px;
-  top: -2px;
-  border: none;
-}
-.like-btn:active {
-  box-shadow: box-shadow 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
-  transform: translateY(3px);
-}
-.like-button {
+
+.card__like-button {
   font-size: 1rem;
   padding: 5px 10px;
   color: #585858;
 }
-.liked {
+.card__like-button--liked {
   font-weight: bold;
   color: #1565c0;
 }
 
-.no-liked {
-  background-color: red;
-  font-weight: 1000;
-}
-
-.likes-count {
-  position: relative;
-  top: -5px;
-  left: -5px;
+.card__like-button--not-liked {
+  font-weight: 300;
+  font-size: 13px;
 }
 
 /* Media Queries */
-/* min-width: 1025 px */
 
 @media screen and (min-width: 1025px) {
   .card {
@@ -183,7 +164,6 @@ input::placeholder {
     border: none !important;
   }
 }
-
 @media screen and (max-width: 1024px) {
   .card {
     padding: 15px 30px;
@@ -193,7 +173,6 @@ input::placeholder {
     border: none !important;
   }
 }
-
 @media screen and (max-width: 768px) {
   .card {
     padding: 15px 30px;

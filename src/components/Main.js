@@ -1,14 +1,9 @@
 import Cards from "./Cards";
-import "../App.css";
 
-const Main = ({ search, setSearch }) => {
+const Main = ({ search }) => {
   return (
-    <div className="slider">
-      <div className="slider-track">
-        <div className="slide">
-          <Cards search={search} setSearch={setSearch} />
-        </div>
-      </div>
+    <div>
+      <Cards search={search} />
     </div>
   );
 };

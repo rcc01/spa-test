@@ -3,13 +3,13 @@ import Main from "./Main";
 import logo from "../images/logo.png";
 import "../App.css";
 
-const Home = () => {
+const Navbar = () => {
   const [search, setSearch] = useState("");
 
   return (
     <div>
       <div className="navbar">
-        <div className="logo">
+        <div className="navbar__logo">
           <img
             src={logo}
             alt="samy-logo"
@@ -19,7 +19,7 @@ const Home = () => {
             }}
           />
         </div>
-        <div className="searchBar">
+        <div className="navbar__searchBar">
           <input
             onChange={(e) => setSearch(e.target.value)}
             type="text"
@@ -27,9 +27,9 @@ const Home = () => {
           />
         </div>
       </div>
-      <Main search={search} setSearch={setSearch} />
+      <Main search={search} />
     </div>
   );
 };
 
-export default Home;
+export default Navbar;
