@@ -1,21 +1,16 @@
 import { useState, useEffect } from "react";
 import "../App.css";
-
 import Card from "./Card";
 
 const Cards = ({ search }) => {
   const [cards, setCards] = useState([]);
 
   const fetchData = async () => {
-    return fetch("http://localhost:3100/images")
+    fetch("http://localhost:3100/images/")
       .then((response) => response.json())
-      .then((data) => {
-        data.forEach((title) => {
-          if (title.title !== "") {
-            title.title = title.title.toUpperCase();
-          }
-        });
-        setCards(data);
+      .then((json) => {
+        console.log(json);
+        setCards(json);
       });
   };
 

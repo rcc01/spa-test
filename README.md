@@ -1,3 +1,10 @@
+# Starting Off the App
+
+This project uses a Mock Server: https://www.mocks-server.org/docs/overview/
+To run it, go to terminal, install it and run it with npm run mocks.
+
+After that, you should be able to see the cards rendered on the DOM.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
